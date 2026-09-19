@@ -1,0 +1,15 @@
+{
+  "name": "active-memory",
+  "description": "active-memory: keep long Claude chats on track.",
+  "owner": {
+    "name": "Klopyy",
+    "url": "https://github.com/Klopyy"
+  },
+  "plugins": [
+    {
+      "name": "active-memory",
+      "source": "./",
+      "description": "Keeps long Claude chats on track: code word, checkpoints, and complete handoff files."
+    }
+  ]
+}
