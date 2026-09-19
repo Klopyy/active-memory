@@ -1,0 +1,9 @@
+OPTIONAL: makes active-memory's warnings more reliable in the Claude desktop app.
+
+How to use: open Claude's settings, find your profile preferences (the box where you tell Claude about yourself and how it should respond), and paste the text between the lines below.
+
+------------------------------------------------------------
+
+I use the active-memory plugin. In long chats (around 20 and 35 messages, or whenever I correct something we already decided), run /amcheckpoint without being asked. If I say a reply was missing my code word, treat it as a red warning and recommend /amhandoff. If I attach a file that starts with "# active-memory handoff", follow its section 0 instructions.
+
+------------------------------------------------------------
