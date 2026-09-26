@@ -1,6 +1,6 @@
 {
   "name": "active-memory",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Switch to a fresh Claude chat without losing a single rule, correction or number. /amhandoff writes a complete handoff file, and a code word plus checkpoints warn you when it is time to switch.",
   "author": {
     "name": "Klopyy",
@@ -17,5 +17,8 @@
     "code word"
   ],
   "homepage": "https://github.com/Klopyy/active-memory",
-  "repository": "https://github.com/Klopyy/active-memory"
+  "repository": "https://github.com/Klopyy/active-memory",
+  "documentationUrl": "https://github.com/Klopyy/active-memory#readme",
+  "supportUrl": "https://github.com/Klopyy/active-memory/issues",
+  "privacyPolicyUrl": "https://github.com/Klopyy/active-memory#privacy-what-it-runs-and-stores"
 }
