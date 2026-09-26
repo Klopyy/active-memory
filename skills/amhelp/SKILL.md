@@ -6,7 +6,7 @@ description: >
   commands", or "help with amcodeword / amcheckpoint / amhandoff / amsetup". It shows a short
   guide to every active-memory command plus one tip tailored to the current chat.
 metadata:
-  version: "0.2.1"
+  version: "0.2.2"
 ---
 
 # active-memory help

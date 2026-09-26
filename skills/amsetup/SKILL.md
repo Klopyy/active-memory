@@ -7,7 +7,7 @@ description: >
   plugin. It checks what active-memory needs on this machine, explains what works
   without Python, and offers to install Python with the user's approval.
 metadata:
-  version: "0.2.1"
+  version: "0.2.2"
 ---
 
 # active-memory setup check
@@ -49,7 +49,7 @@ Rules for this step:
 
 - Ask before running anything. Never install silently, and never install without saying what it is.
 - The install may ask for an administrator password or open a UAC prompt. Say so beforehand.
-- If the user says no, that is fine. Confirm that the four commands still work, and stop.
+- If the user says no, that is fine. Confirm that every command still works, and stop.
 - After installing on Windows, the user must open a new terminal before `py` is found. Say that.
 
 ## Step 3: confirm
@@ -60,7 +60,7 @@ Run the version check again and report whether the automatic checks are now acti
 
 The plugin still works. Tell the user:
 
-- The four commands work as normal.
+- Every command works as normal.
 - Claude will still add checkpoints on its own when a chat gets long, just less reliably.
 - They watch for the missing code word themselves, which is the intended way anyway.
 - To silence any hook errors for good, delete `hooks/hooks.json` from the installed plugin folder.
