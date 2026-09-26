@@ -1,6 +1,6 @@
 # active-memory handoff: Yacht Lift Tariff Calculator
 
-**Handoff #1** · 2026-09-17 · Lineage: #1 (2026-09-17): Initial planning session — pricing rules, layout, styling, and business rules defined; no code written yet.
+**Handoff #1** · 2026-09-17 · Lineage: #1 (2026-09-17): Initial planning session: pricing rules, layout, styling, and business rules defined; no code written yet.
 
 ## 0. Instructions for Claude (read first)
 
@@ -21,7 +21,7 @@ You are continuing work from a previous chat. That chat is gone; this file is th
 ## 2. About the user (as relevant to this work)
 - Runs/represents a shipyard business in Sharm El Sheikh, Egypt.
 - Key staff: Captain Hany (approves all prices, must manually approve boats over 24m), Mona (accounting, will use the calculator daily).
-- Currently in planning-only mode — explicitly asked not to write code until told to.
+- Currently in planning-only mode, explicitly asked not to write code until told to.
 
 ## 3. Style & communication
 - **Language:** English replies from Claude; all page UI text must be Arabic, RTL.
@@ -44,8 +44,8 @@ You are continuing work from a previous chat. That chat is gone; this file is th
 |---|---|---|
 | 1 | Proposed a results table with "المبلغ" (amount) column ambiguous in RTL rendering | Explicit confirmation: Amount/Total column must sit on the LEFT side of the RTL page (item column on the right), since totals read last in RTL |
 | 2 | Assumed storage days counted as a simple date difference | Storage days are inclusive of both the lift-in day and the lift-out day |
-| 3 | File was initially named `tariff.html` | Renamed to `yacht-lift-tariff.html` — "tariff.html is too generic" |
-| 4 | Weekend surcharge locked in at 10% | User later said they're unsure — might be 15%, needs to confirm with Captain Hany (currently unconfirmed, kept at 10% as placeholder) |
+| 3 | File was initially named `tariff.html` | Renamed to `yacht-lift-tariff.html`: "tariff.html is too generic" |
+| 4 | Weekend surcharge locked in at 10% | User later said they're unsure, might be 15%, needs to confirm with Captain Hany (currently unconfirmed, kept at 10% as placeholder) |
 
 ## 6. Decisions
 | Decision | Why |
@@ -60,7 +60,7 @@ You are continuing work from a previous chat. That chat is gone; this file is th
 ## 7. Changed / rejected
 - PDF export button → rejected, replaced with browser print-to-PDF (CSS print styles)
 - Filename `tariff.html` → renamed to `yacht-lift-tariff.html`
-- Weekend surcharge 10% → flagged uncertain, possibly 15%, pending confirmation with Captain Hany (not yet resolved — see Open questions)
+- Weekend surcharge 10% → flagged uncertain, possibly 15%, pending confirmation with Captain Hany (not yet resolved, see Open questions)
 
 ## 8. Data & facts (exact)
 | Item | Value |
@@ -70,17 +70,17 @@ You are continuing work from a previous chat. That chat is gone; this file is th
 | Storage fee | 95 EGP per meter per day |
 | Storage day counting | Inclusive of both lift-in day and lift-out day |
 | VAT | 14%, applied to everything (lifting + storage + add-ons) |
-| Weekend surcharge | Friday & Saturday lifting: +10% — **UNCONFIRMED, may be 15%, pending Captain Hany** |
+| Weekend surcharge | Friday & Saturday lifting: +10%, **UNCONFIRMED, may be 15%, pending Captain Hany** |
 | Pressure washing | Flat 600 EGP per boat, optional add-on |
-| Oversize threshold | Boats over 24m: no automatic price — show warning requiring Captain Hany's manual approval |
+| Oversize threshold | Boats over 24m: no automatic price, show warning requiring Captain Hany's manual approval |
 | Primary button color | Navy #1B2A4A (no red anywhere) |
 | Arabic font | Cairo (Google Fonts) |
 | File name | `yacht-lift-tariff.html` |
 | Admin password (settings panel) | [secret removed: re-enter it] |
-| Mooring (in-water stay) section | Planned for later; prices not yet provided by user — backlog item, not blocking current build |
+| Mooring (in-water stay) section | Planned for later; prices not yet provided by user; backlog item, not blocking current build |
 
 ## 9. People, terms & names
-- **People:** Captain Hany — approves all prices, must manually approve any quote for boats over 24m. Mona — accounting staff, will use the calculator daily.
+- **People:** Captain Hany: approves all prices, must manually approve any quote for boats over 24m. Mona: accounting staff, will use the calculator daily.
 - **Terms:** "Lifting" = crane lift fee; "Storage" = on-land storage fee; "Mooring" = future section for boats staying in water instead of on land.
 - **Names in use:** File `yacht-lift-tariff.html`.
 
@@ -102,10 +102,10 @@ You are continuing work from a previous chat. That chat is gone; this file is th
 - Can boat length be entered with decimals (e.g. 12.5m)? If so, how do partial meters round for billing?
 - Is storage optional (some boats lift and leave same day), or always charged?
 - Does the weekend surcharge apply only to lifting, or also to storage?
-- Mooring (in-water) section prices — not yet provided by user.
+- Mooring (in-water) section prices: not yet provided by user.
 
 ## 13. Re-attach checklist
-Nothing to attach — no files were created during this session (planning only).
+Nothing to attach: no files were created during this session (planning only).
 
 ---
 <sub>Audit: 13/13 sections · 6 rules · 4 corrections · 12 data points · secrets removed: yes · generated by active-memory</sub>

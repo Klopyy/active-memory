@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="470" viewBox="0 0 820 470" role="img" aria-label="Example chat: Claude replies start with Yes Boss!, one reply misses it, active-memory warns, and /amhandoff writes a handoff file">
+  <style>
+    .t { font-family: ui-monospace, "Cascadia Code", Consolas, Menlo, monospace; font-size: 15px; fill: #d6dae3; }
+    .dim { fill: #8a93a6; }
+    .user { fill: #9ecbff; }
+    .cw { fill: #7ee2a8; font-weight: 700; }
+    .bad { fill: #ffb86b; }
+    .warn { fill: #ffd479; }
+    .lbl { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; fill: #8a93a6; }
+  </style>
+  <rect x="0" y="0" width="820" height="470" rx="14" fill="#161a22"/>
+  <rect x="0" y="0" width="820" height="38" rx="14" fill="#1f2430"/>
+  <rect x="0" y="24" width="820" height="14" fill="#1f2430"/>
+  <circle cx="22" cy="19" r="6" fill="#ff5f57"/>
+  <circle cx="42" cy="19" r="6" fill="#febc2e"/>
+  <circle cx="62" cy="19" r="6" fill="#28c840"/>
+  <text x="410" y="24" text-anchor="middle" class="lbl">Claude Code · message 27 · active-memory on</text>
+
+  <text x="28" y="76" class="t"><tspan class="user">&gt; Add the weekend surcharge to the quote.</tspan></text>
+  <text x="28" y="106" class="t">● <tspan class="cw">Yes Boss!</tspan> Added +10% for Friday and Saturday lifts.</text>
+
+  <text x="28" y="150" class="t"><tspan class="user">&gt; Now get it ready so Mona can save it.</tspan></text>
+  <text x="28" y="180" class="t">● <tspan class="bad">Sure! I added a "Download PDF" button to the page.</tspan></text>
+  <text x="44" y="204" class="t dim">(the PDF button was rejected 20 messages ago)</text>
+
+  <rect x="20" y="224" width="780" height="70" rx="8" fill="#2a2415" stroke="#6b5a2a"/>
+  <text x="36" y="252" class="t warn">🐤 active-memory: that reply was missing your code word.</text>
+  <text x="36" y="276" class="t warn">   Claude may be losing track of this chat. Run /amhandoff.</text>
+
+  <text x="28" y="334" class="t"><tspan class="user">&gt; /amhandoff</tspan></text>
+  <text x="28" y="364" class="t">● <tspan class="cw">Yes Boss!</tspan> Handoff #1 written: handoff.md</text>
+  <text x="44" y="388" class="t dim">13/13 sections · 6 rules · 4 corrections · secrets removed</text>
+  <text x="44" y="412" class="t dim">Attach it to a new chat and send "continue".</text>
+
+  <text x="796" y="454" text-anchor="end" class="lbl">illustration</text>
+</svg>
