@@ -1,0 +1,67 @@
+name: Bug report
+description: Something in active-memory does not work as described
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please never paste passwords, keys or private chat content.
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Where did it happen?
+      options:
+        - Claude Code
+        - Claude desktop app
+        - claude.ai in the browser
+        - Cowork
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: command
+    attributes:
+      label: Which part?
+      options:
+        - /amhandoff
+        - /amcodeword
+        - /amcheckpoint
+        - /amhelp
+        - /amsetup
+        - Automatic checks (message counter or code word checker)
+        - Installing or updating
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead?
+      description: Include any error message exactly as shown.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Type /amcodeword
+        2. Send a message
+        3. ...
+  - type: input
+    id: version
+    attributes:
+      label: active-memory version
+      description: Shown in .claude-plugin/plugin.json, or on the release you installed.
+      placeholder: "0.2.4"
+  - type: input
+    id: system
+    attributes:
+      label: System and Python
+      description: For example "Windows 11, py --version says Python 3.12.1" or "macOS 15, no Python".

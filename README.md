@@ -1,5 +1,7 @@
 # active-memory
 
+[![Listed on ClaudePluginHub](https://www.claudepluginhub.com/badge/klopyy-active-memory)](https://www.claudepluginhub.com/plugins/klopyy-active-memory?ref=badge)
+
 **Switch to a fresh Claude chat without losing a single rule, correction or number.**
 
 You're 40 messages into a project. Claude starts forgetting a rule you gave at the start, brings back a mistake you already fixed, or uses an old price. The fix is a fresh chat, but a fresh chat knows nothing, and asking Claude to "summarize this chat" loses exactly the things that matter.
@@ -45,6 +47,25 @@ Always the same 14 sections, so a new chat knows exactly where to look:
 | 6 | Decisions | 13 | Files to attach again |
 
 👉 See a full example (a made-up project): [`examples/sample-handoff.md`](examples/sample-handoff.md)
+
+### Example session
+
+A made-up example, the planning chat behind the [sample file](examples/sample-handoff.md). The chat never settled one price, so `/amhandoff` asks before writing:
+
+> **You:** /amhandoff
+>
+> **Claude:** Yes Boss! One thing to settle before I write the file:
+> 1. Holiday surcharge: 20% (said first) or 25% (said later)? a) 20%, b) 25%, c) skip, flag it in the file
+>
+> **You:** c
+>
+> **Claude:** Yes Boss! Handoff #1 written: `handoff.md`. 13/13 sections, 6 rules, 4 corrections, secrets removed. Attach it to a new chat and send **continue**.
+
+In the new chat, with only the file attached:
+
+> **You:** continue
+>
+> **Claude:** Yes Boss! Goal: a booking page for Sunny Paws (`sunny-paws-booking.html`). State: every pricing and layout rule is agreed, no code written yet (your rule). Next: confirm the holiday surcharge (20% or 25%) with Priya. Open questions: does the 30-minute minimum apply to 60-minute walks, and can customers book several dates at once? Ready to continue with the holiday surcharge?
 
 **In the new chat:** attach the file and send **continue**. Claude replies with a short summary of the goal, where you are and the next step, then waits for your go.
 
@@ -141,6 +162,7 @@ Claude Code gets two extra automatic checks:
 - **Files don't carry over.** Anything you uploaded must be attached again in the new chat. The handoff file lists them for you.
 - **Passwords and keys are never copied.** They show up as `[secret removed]` in handoff files.
 - **The code word is a warning sign, not a guarantee.** Claude can lose track of something and still remember the code word.
+- **Found a bug or have an idea?** [Open an issue](https://github.com/Klopyy/active-memory/issues/new/choose). See [CONTRIBUTING.md](CONTRIBUTING.md) for how to help.
 - **Pick a code word Claude wouldn't say anyway.** "Okay" is a bad choice because Claude often starts replies with it.
 
 ## Privacy: what it runs and stores
@@ -164,6 +186,7 @@ active-memory/
 ├── hooks/                 Claude Code only: message counter + code word checker
 ├── examples/              sample handoff file, custom instructions
 ├── assets/                picture used in this README
+├── .github/               issue templates for bug reports and ideas
 └── tests/                 automatic tests for the checkers: py tests/test_hooks.py
 ```
 
