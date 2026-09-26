@@ -161,7 +161,7 @@ Claude Code gets two extra automatic checks:
 
 ```
 active-memory/
-├── .claude-plugin/        plugin info (name, version)
+├── .claude-plugin/        plugin info (name, version, icon)
 ├── skills/
 │   ├── amhandoff/         /amhandoff (+ picking up from a handoff file)
 │   ├── amcodeword/        /amcodeword

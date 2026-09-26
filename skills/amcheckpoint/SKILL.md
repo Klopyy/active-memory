@@ -9,7 +9,7 @@ description: >
   already settled. It writes a compact recap of the chat plus a green, yellow, or
   red health check.
 metadata:
-  version: "0.2.2"
+  version: "0.2.3"
 ---
 
 # Checkpoint
