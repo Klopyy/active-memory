@@ -1,9 +1,11 @@
-#!/usr/bin/env python3
-"""Stop hook: warns the USER (not Claude) when a reply doesn't start with the code word.
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""Stop hook (runs on any Python, 2.7 and every 3.x): warns the USER (not Claude) when a reply doesn't start with the code word.
 
 Output is a systemMessage, which Claude Code shows to the user. Nothing is fed back
 to Claude, so the code word stays a real memory test.
 """
+import io
 import json
 import os
 import re
@@ -31,9 +33,12 @@ def _is_real_prompt(entry):
 def turn_texts(transcript_path):
     """Assistant texts written after the latest real user prompt, in order."""
     try:
-        with open(transcript_path, encoding="utf-8") as f:
+        f = io.open(transcript_path, encoding="utf-8")
+        try:
             entries = [json.loads(line) for line in f if line.strip()]
-    except (OSError, ValueError):
+        finally:
+            f.close()
+    except (IOError, OSError, ValueError):
         return []
     last_prompt = -1
     for i, e in enumerate(entries):
@@ -81,8 +86,11 @@ def starts_with_phrase(text, phrase):
 def main():
     data = state.read_stdin_json(sys.stdin)
     if os.environ.get("ACTIVE_MEMORY_DEBUG"):
-        with open(os.path.join(state.state_dir(), "stop_debug.jsonl"), "a") as f:
-            f.write(json.dumps(data) + "\n")
+        f = io.open(os.path.join(state.state_dir(), "stop_debug.jsonl"), "a", encoding="utf-8")
+        try:
+            f.write(u"%s\n" % json.dumps(data, ensure_ascii=False))
+        finally:
+            f.close()
     if data.get("stop_hook_active"):
         return
     session = data.get("session_id", "unknown")
