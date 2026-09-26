@@ -6,7 +6,7 @@ description: >
   commands", or "help with amcodeword / amcheckpoint / amhandoff / amsetup". It shows a short
   guide to every active-memory command plus one tip tailored to the current chat.
 metadata:
-  version: "0.2.0"
+  version: "0.2.1"
 ---
 
 # active-memory help
@@ -16,17 +16,17 @@ Show the guide below. Adapt its language to the user's. If a code word is active
 ## Guide to show
 
 ```
-🧠 **active-memory: keeps long chats on track**
+🧠 **active-memory: move to a fresh chat without losing anything**
 
-Long chats make Claude slowly lose track of early details. active-memory warns you when that starts, and moves your work to a fresh chat without losing anything.
+Long chats make Claude slowly lose track of early details. active-memory moves your work to a fresh chat without losing a single rule, correction or number, and warns you when it is time to switch.
 
 To use a command, type it in the chat box like a normal message.
 
 | Command | What it does | When to use it |
 |---|---|---|
+| `/amhandoff` | Writes a complete handoff file so a new chat continues exactly where you left off | When the code word goes missing, you see 🔴, or you're stopping for the day |
 | `/amcodeword` | Claude starts every reply with **Yes Boss!** Use `/amcodeword Your phrase` for your own, `/amcodeword off` to stop, `/amcodeword status` to check | At the start of any chat you expect to be long |
 | `/amcheckpoint` | A quick recap of the chat so far, plus a 🟢🟡🔴 health check | When replies feel off, or every ~20 messages |
-| `/amhandoff` | Writes a complete handoff file so a new chat continues exactly where you left off | When the code word goes missing, you see 🔴, or you're stopping for the day |
 | `/amhelp` | Shows this guide | Anytime |
 | `/amsetup` | Checks what the plugin needs on this computer and fixes it | If something isn't working |
 
