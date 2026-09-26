@@ -2,6 +2,8 @@
 
 **Know when Claude starts losing track of a long chat, and move to a fresh chat without losing a thing.**
 
+![A reply without the code word triggers a warning, and /amhandoff moves the chat to a fresh one](assets/demo.svg)
+
 You're 40 messages into a project. Claude suddenly forgets a rule you gave at the start, brings back a mistake you already fixed, or uses an old price. Starting a new chat means explaining everything again, and something always gets forgotten.
 
 active-memory helps with both problems:
@@ -97,6 +99,21 @@ We ran a 24-message planning chat with 28 details hidden in it: prices, rules gi
 /plugin install active-memory@active-memory
 ```
 
+### Updating from an older version
+
+Claude Code, in a terminal:
+
+```
+claude plugin marketplace update active-memory
+claude plugin update active-memory@active-memory
+```
+
+Then restart Claude Code.
+
+In the desktop app, download the newest `active-memory.plugin` from [Releases](../../releases) and install it again.
+
+### Extra checks in Claude Code
+
 Claude Code gets two extra automatic checks:
 
 - **Message counter:** adds a checkpoint at 20 and 35 messages, without relying on Claude to notice.
@@ -126,7 +143,8 @@ active-memory/
 │   └── amsetup/           /amsetup (checks Python, offers to install it)
 ├── hooks/                 Claude Code only: message counter + code word checker
 ├── examples/              sample handoff file, custom instructions
-└── tests/                 automatic tests for the checkers: python3 tests/test_hooks.py
+├── assets/                picture used in this README
+└── tests/                 automatic tests for the checkers: py tests/test_hooks.py
 ```
 
 ## License

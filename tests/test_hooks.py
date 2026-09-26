@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run: python3 tests/test_hooks.py"""
+"""Run: py tests/test_hooks.py  (or python3 tests/test_hooks.py on Mac/Linux)"""
 import io
 import json
 import os
