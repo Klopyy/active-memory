@@ -150,6 +150,13 @@ Claude Code gets two extra automatic checks:
 - **The code word is a warning sign, not a guarantee.** Claude can lose track of something and still remember the code word.
 - **Pick a code word Claude wouldn't say anyway.** "Okay" is a bad choice because Claude often starts replies with it.
 
+## Privacy: what it runs and stores
+
+- **Nothing leaves your computer.** active-memory makes no network requests and sends no data anywhere.
+- **Handoff files and checkpoints** are written by Claude in your chat, like any other reply. Passwords and keys are replaced with `[secret removed]`.
+- **The Claude Code hooks** (two small Python scripts in `hooks/scripts/`) run on your computer when you send a message and when Claude finishes a reply. They read the current chat's transcript file to check the start of Claude's reply, and keep a small counter file per chat in `~/.claude/active-memory/sessions/` (the message count, your code word and a miss count). Set `ACTIVE_MEMORY_STATE_DIR` to store it somewhere else. Delete that folder any time to clear it.
+- **`/amsetup`** only runs version checks such as `py --version`. It suggests a Python install command (for example `winget install -e --id Python.Python.3.12`) and runs it only after you say yes.
+
 ## What's inside
 
 ```
