@@ -1,6 +1,6 @@
 {
   "name": "active-memory",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Keeps long Claude chats on track: a code word that goes missing when Claude starts losing track, quick checkpoints, and complete handoff files that bring a new chat fully up to speed.",
   "author": {
     "name": "Klopyy",

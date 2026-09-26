@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Run: python3 tests/test_hooks.py"""
+import io
 import json
 import os
 import subprocess
@@ -134,6 +135,26 @@ check("no code word set: silent", stop("s5", [user("hello"), asst(text("Hi"))]) 
 check("broken input: exits cleanly",
       subprocess.run([sys.executable, os.path.join(SCRIPTS, "check_codeword.py")], input="not json",
                      capture_output=True, text=True, env=ENV).returncode == 0)
+
+# --- the exact commands from hooks.json, run through a shell ---
+import json as _json
+_cfg = _json.load(io.open(os.path.join(ROOT, "hooks", "hooks.json"), encoding="utf-8"))
+
+
+def shell_hook(event, payload):
+    cmd = _cfg["hooks"][event][0]["hooks"][0]["command"].replace("${CLAUDE_PLUGIN_ROOT}", ROOT)
+    p = subprocess.run(cmd, shell=True, input=json.dumps(payload), capture_output=True, text=True, env=ENV)
+    return p.returncode, p.stdout.strip()
+
+
+code, _ = shell_hook("UserPromptSubmit", {"session_id": "sh1", "prompt": "/amcodeword Aye Captain!"})
+check("hooks.json UserPromptSubmit command runs", code == 0 and state_of("sh1")["codeword"] == "Aye Captain!")
+code, out = shell_hook("Stop", {"session_id": "sh1", "last_assistant_message": "Hello there"})
+check("hooks.json Stop command runs and catches a miss", code == 0 and "missing your code word" in out)
+noexe = dict(ENV, PATH="/nonexistent")
+p = subprocess.run(_cfg["hooks"]["Stop"][0]["hooks"][0]["command"].replace("${CLAUDE_PLUGIN_ROOT}", ROOT),
+                   shell=True, input="{}", capture_output=True, text=True, env=noexe)
+check("no interpreter anywhere: still exits 0, prints nothing", p.returncode == 0 and p.stdout.strip() == "")
 
 print(f"\n{failures} failure(s)")
 sys.exit(1 if failures else 0)

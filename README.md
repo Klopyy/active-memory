@@ -24,6 +24,7 @@ All commands start with **am** (short for **a**ctive-**m**emory). Type a command
 | `/amcheckpoint` | A short recap of the chat + 🟢🟡🔴 health check | When replies feel off, or every ~20 messages |
 | `/amhandoff` | Writes a handoff file for a new chat | When the code word goes missing, you see 🔴, or you're done for the day |
 | `/amhelp` | Shows the guide and one tip for your current chat | Anytime |
+| `/amsetup` | Checks what the plugin needs on this computer | If something isn't working |
 
 **Code word options**
 
@@ -103,10 +104,12 @@ A brand-new chat, given only the file, answered these check questions correctly:
 /plugin install active-memory@active-memory
 ```
 
-Claude Code gets two extra automatic checks (they need Python 3 installed):
+Claude Code gets two extra automatic checks:
 
 - **Message counter:** adds a checkpoint at 20 and 35 messages, without relying on Claude to notice.
 - **Code word checker:** checks every reply for your code word. If it's missing, you see: *"🐤 active-memory: that reply was missing your code word…"*. The checker never reminds Claude of the code word, so it stays a real test.
+
+**Do these need Python?** Only these two checks do, and any version works (2.7 or any 3.x). The plugin looks for `py`, then `python3`, then `python`, so it uses whatever you already have. If you have none, the checks quietly do nothing and the four commands keep working. Type `/amsetup` and Claude will check your computer and offer to install Python for you, only if you say yes.
 
 ---
 
@@ -126,7 +129,8 @@ active-memory/
 │   ├── amcodeword/        /amcodeword
 │   ├── amcheckpoint/      /amcheckpoint (+ automatic checkpoints)
 │   ├── amhandoff/         /amhandoff (+ picking up from a handoff file)
-│   └── amhelp/            /amhelp
+│   ├── amhelp/            /amhelp
+│   └── amsetup/           /amsetup (checks Python, offers to install it)
 ├── hooks/                 Claude Code only: message counter + code word checker
 ├── examples/              sample handoff file, custom instructions
 └── tests/                 automatic tests for the checkers: python3 tests/test_hooks.py

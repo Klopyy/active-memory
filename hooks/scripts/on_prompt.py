@@ -1,5 +1,6 @@
-#!/usr/bin/env python3
-"""UserPromptSubmit hook.
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""UserPromptSubmit hook. Runs on any Python (2.7 and every 3.x).
 
 1. Reads /amcodeword commands and stores the phrase (never echoed back to Claude).
 2. Counts exchanges and, at 20 and 35, adds a note asking Claude to run a checkpoint.
@@ -56,11 +57,11 @@ def main():
     if st["turns"] in state.NUDGE_AT:
         level = "yellow" if st["turns"] == state.NUDGE_AT[0] else "red"
         note = (
-            f"[active-memory] This chat has reached {st['turns']} exchanges. "
-            f"First reply to the user's message exactly as you normally would, following every "
-            f"rule of this chat. Then, at the end of that same reply, append a checkpoint "
-            f"(amcheckpoint skill) with health at least {level}. Do not replace the answer with it."
-        )
+            "[active-memory] This chat has reached {0} exchanges. "
+            "First reply to the user's message exactly as you normally would, following every "
+            "rule of this chat. Then, at the end of that same reply, append a checkpoint "
+            "(amcheckpoint skill) with health at least {1}. Do not replace the answer with it."
+        ).format(st["turns"], level)
         print(json.dumps({
             "hookSpecificOutput": {
                 "hookEventName": "UserPromptSubmit",

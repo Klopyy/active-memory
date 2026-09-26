@@ -3,10 +3,10 @@ name: amhelp
 description: >
   This skill should be used when the user types "/amhelp", or asks "what does
   active-memory do", "how do I use active-memory", "what are the active-memory
-  commands", or "help with amcodeword / amcheckpoint / amhandoff". It shows a short
+  commands", or "help with amcodeword / amcheckpoint / amhandoff / amsetup". It shows a short
   guide to every active-memory command plus one tip tailored to the current chat.
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
 ---
 
 # active-memory help
@@ -28,6 +28,7 @@ To use a command, type it in the chat box like a normal message.
 | `/amcheckpoint` | A quick recap of the chat so far, plus a 🟢🟡🔴 health check | When replies feel off, or every ~20 messages |
 | `/amhandoff` | Writes a complete handoff file so a new chat continues exactly where you left off | When the code word goes missing, you see 🔴, or you're stopping for the day |
 | `/amhelp` | Shows this guide | Anytime |
+| `/amsetup` | Checks what the plugin needs on this computer and fixes it | If something isn't working |
 
 **The usual flow**
 1. Type `/amcodeword` at the start of a chat.

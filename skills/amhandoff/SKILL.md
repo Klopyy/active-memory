@@ -9,7 +9,7 @@ description: >
   It should also be used when a user attaches or pastes a file that starts with
   "# active-memory handoff".
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
 ---
 
 # Handoff
