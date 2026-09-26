@@ -8,7 +8,7 @@ description: >
   every reply with a fixed phrase (default "Yes Boss!") so the user can spot the
   moment Claude starts losing track of a long chat: the phrase goes missing.
 metadata:
-  version: "0.2.0"
+  version: "0.2.1"
 ---
 
 # Code word

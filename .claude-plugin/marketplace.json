@@ -1,6 +1,6 @@
 {
   "name": "active-memory",
-  "description": "active-memory: keep long Claude chats on track.",
+  "description": "active-memory: move to a fresh Claude chat without losing anything.",
   "owner": {
     "name": "Klopyy",
     "url": "https://github.com/Klopyy"
@@ -9,7 +9,7 @@
     {
       "name": "active-memory",
       "source": "./",
-      "description": "Keeps long Claude chats on track: code word, checkpoints, and complete handoff files."
+      "description": "Complete handoff files for moving to a fresh chat, plus a code word and checkpoints that warn you when it is time."
     }
   ]
 }

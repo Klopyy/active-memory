@@ -7,7 +7,7 @@ description: >
   plugin. It checks what active-memory needs on this machine, explains what works
   without Python, and offers to install Python with the user's approval.
 metadata:
-  version: "0.2.0"
+  version: "0.2.1"
 ---
 
 # active-memory setup check

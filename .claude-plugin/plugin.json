@@ -1,19 +1,19 @@
 {
   "name": "active-memory",
-  "version": "0.2.0",
-  "description": "Keeps long Claude chats on track: a code word that goes missing when Claude starts losing track, quick checkpoints, and complete handoff files that bring a new chat fully up to speed.",
+  "version": "0.2.1",
+  "description": "Switch to a fresh Claude chat without losing a single rule, correction or number. /amhandoff writes a complete handoff file, and a code word plus checkpoints warn you when it is time to switch.",
   "author": {
     "name": "Klopyy",
     "url": "https://github.com/Klopyy"
   },
   "license": "MIT",
   "keywords": [
+    "handoff",
+    "new chat",
     "context",
     "long chats",
-    "handoff",
-    "recap",
+    "chat memory",
     "checkpoint",
-    "memory",
     "code word"
   ],
   "homepage": "https://github.com/Klopyy/active-memory",
