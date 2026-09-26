@@ -1,6 +1,6 @@
 {
   "name": "active-memory",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Switch to a fresh Claude chat without losing a single rule, correction or number. /amhandoff writes a complete handoff file, and a code word plus checkpoints warn you when it is time to switch.",
   "author": {
     "name": "Klopyy",
