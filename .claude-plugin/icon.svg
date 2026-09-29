@@ -1,13 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="active-memory">
-  <rect width="256" height="256" rx="56" fill="#1E293B"/>
-  <rect x="34" y="52" width="104" height="76" rx="18" fill="#9ECBFF"/>
-  <path d="M58 128 L58 152 L82 128 Z" fill="#9ECBFF"/>
-  <rect x="54" y="74" width="64" height="9" rx="4.5" fill="#1E293B"/>
-  <rect x="54" y="96" width="44" height="9" rx="4.5" fill="#1E293B"/>
-  <rect x="118" y="128" width="104" height="76" rx="18" fill="#7EE2A8"/>
-  <path d="M198 204 L198 228 L174 204 Z" fill="#7EE2A8"/>
-  <rect x="138" y="150" width="64" height="9" rx="4.5" fill="#1E293B"/>
-  <rect x="138" y="172" width="44" height="9" rx="4.5" fill="#1E293B"/>
-  <path d="M150 70 C188 70 204 84 204 112" fill="none" stroke="#FFD479" stroke-width="12" stroke-linecap="round"/>
-  <path d="M188 100 L204 120 L220 100" fill="none" stroke="#FFD479" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1B2440"/>
+      <stop offset="1" stop-color="#0B1020"/>
+    </linearGradient>
+    <linearGradient id="left" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#A5D4FF"/>
+      <stop offset="1" stop-color="#5B8DEF"/>
+    </linearGradient>
+    <linearGradient id="right" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8FF0C4"/>
+      <stop offset="1" stop-color="#2DD4BF"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.45" r="0.5">
+      <stop offset="0" stop-color="#2DD4BF" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#2DD4BF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="url(#bg)"/>
+  <circle cx="128" cy="120" r="104" fill="url(#glow)"/>
+  <!-- left hemisphere -->
+  <path d="M123 58 C106 48 82 54 76 74 C58 76 46 92 50 110 C38 120 38 142 52 152 C50 172 66 188 86 186 C94 200 112 204 123 196 Z" fill="url(#left)"/>
+  <!-- right hemisphere -->
+  <path d="M133 58 C150 48 174 54 180 74 C198 76 210 92 206 110 C218 120 218 142 204 152 C206 172 190 188 170 186 C162 200 144 204 133 196 Z" fill="url(#right)"/>
+  <!-- folds -->
+  <g fill="none" stroke="#0B1020" stroke-opacity="0.55" stroke-width="7" stroke-linecap="round">
+    <path d="M78 78 C92 84 98 96 94 108"/>
+    <path d="M56 116 C72 114 84 122 86 136"/>
+    <path d="M64 160 C74 170 84 150 96 162 C102 168 108 164 112 158"/>
+    <path d="M104 74 C110 86 108 100 116 110"/>
+    <path d="M178 78 C164 84 158 96 162 108"/>
+    <path d="M200 116 C184 114 172 122 170 136"/>
+    <path d="M192 160 C182 170 172 150 160 162 C154 168 148 164 144 158"/>
+    <path d="M152 74 C146 86 148 100 140 110"/>
+  </g>
+  <!-- memory spark: saved and carried forward -->
+  <circle cx="190" cy="196" r="30" fill="#0B1020"/>
+  <path d="M176 196 a14 14 0 1 1 6 11.5" fill="none" stroke="#FFD479" stroke-width="7" stroke-linecap="round"/>
+  <path d="M170 203 L178 211 L186 201" fill="none" stroke="#FFD479" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
