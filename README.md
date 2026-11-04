@@ -89,6 +89,8 @@ We ran a 24-message planning chat with 28 details hidden in it: prices, rules gi
 In a new chat, type:  /amload 7
 ```
 
+![Typing /amsave 7 in one chat, then /amload 7 in a fresh chat brings everything back](assets/demo-amsave.gif)
+
 In the new chat, `/amload 7` loads the pack, checks every file ("12 of 12 verified") and waits for your go. `/amload` alone lists your packs.
 
 **One pack for a whole project.** When the new chat gets long too, type `/amsave 7`. Pack 7 is updated instead of a new one being made: the handoff merges both chats and every chat's files and transcript are kept.
