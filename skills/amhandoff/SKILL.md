@@ -7,9 +7,9 @@ description: >
   the code word went missing. It reads the whole chat in four passes and writes a
   complete handoff.md so a fresh chat is fully up to speed from its first reply.
   It should also be used when a user attaches or pastes a file that starts with
-  "# active-memory handoff".
+  "# active-memory handoff", or a pack (zip or folder) containing such a file.
 metadata:
-  version: "0.2.6"
+  version: "0.3.0"
 ---
 
 # Handoff
@@ -18,11 +18,13 @@ Write a handoff file so complete that a brand-new chat with no access to this on
 
 A plain "write a handoff.md" request produces a summary drawn mostly from recent messages. It loses early rules, corrections, rejected ideas, and exact figures. Prevent that by following the four passes below, every time, in order.
 
-The file layout is fixed and given in **The file** section below. Use it exactly: same title line, same 14 headings (0-13) in the same order, same section 0 text. Worked examples of good and bad extraction are in `references/extraction-guide.md`. Read it when unsure how to capture something.
+The file layout is fixed and given in **The file** section below. Use it exactly: same title line, same 15 headings (0-14) in the same order, same section 0 text. Worked examples of good and bad extraction are in `references/extraction-guide.md`. Read it when unsure how to capture something.
 
 ## Pass 1: Scan (message 1 → last)
 
-Go through the conversation **from the very first message to the last**, in order. Do not start from the recent end. For every message, record anything that belongs in sections 1-13 of the file. Treat these as always important:
+If the chat has pinned rules (`/amrules`, or `[active-memory] Pinned rules` notes), every one goes into section 4 word for word.
+
+Go through the conversation **from the very first message to the last**, in order. Do not start from the recent end. For every message, record anything that belongs in sections 1-14 of the file. Treat these as always important:
 
 - Every instruction about how Claude should behave or write, even if said once in passing ("don't use emojis", "use British spelling", "never start with Okay").
 - Every time the user corrected Claude: what Claude did, what the user wanted instead.
@@ -31,6 +33,7 @@ Go through the conversation **from the very first message to the last**, in orde
 - Every file, document, artifact, or piece of code created or uploaded, and its latest state.
 - The user's own words for things (nicknames, abbreviations, project names).
 - Anything uploaded that the new chat will need again.
+- How Claude was set up: the role it played, its mindset and working style, commands or modes that are on (code word, effort, language), tools, connectors and folders it used, and any instruction about how it should think or decide.
 
 Copy rules and data **word for word**. Summarize only discussion.
 
@@ -54,7 +57,8 @@ Pretend to be a fresh Claude reading only the draft. For each section ask: "What
 
 Check before delivering:
 
-- [ ] The title line and all headings 0-13 match the template exactly, in order. Empty sections say "None."
+- [ ] The title line and all headings 0-14 match the template exactly, in order. Empty sections say "None."
+- [ ] Section 14 lets a fresh Claude act exactly as this one did: same role, mindset, settings and tools.
 - [ ] Section 5 lists every correction as a table row, even small ones.
 - [ ] Every hard rule and every correction from the chat appears.
 - [ ] Every number, price, and name matches the chat exactly.
@@ -63,11 +67,17 @@ Check before delivering:
 - [ ] Files that must be attached again are listed in section 13.
 - [ ] The boot instructions in section 0 are unchanged from the template, with the code-word line filled in.
 
+**Self-quiz.** Write 10 short questions a new chat would need right: at least 3 on rules and corrections, 3 on exact data, 2 on decisions, 1 on the next step, 1 on Claude's role. Answer each using only the draft handoff. Fix the handoff for every answer that is wrong or missing. Do this silently; only the score goes in the audit line.
+
+**Scripts (when the pack tools are available).** Run `recall` and add every fact it lists, or put it in section 7 if it was replaced. Then run `verify`, and do not report the save as done until it prints OK.
+
 Fix anything unchecked, then write the audit line at the bottom of the file as the template shows. Do not add a separate checklist to the file.
 
 ## The file
 
 Write the handoff file with exactly this structure. Replace everything in `<angle brackets>`. Keep headings and the section 0 text as written (only fill in its placeholders). Use the chat's main language for the content. Keep the headings in English so the file stays recognizable.
+
+**Token budget.** The whole point of moving chats is a cheaper, sharper context. Keep `handoff.md` under 1,600 words (the Claude Code plugin enforces this): one fact per line, no narration, no repeated content, and refer to sources by path instead of pasting them. Completeness comes from the pack (sources, transcripts), not from a long handoff. Never cut a rule, correction, decision or exact value to save space; cut discussion instead.
 
 Write compact lines, one fact per bullet. Use tables for data with more than 3 rows. Inline small, critical code or data (up to about 50 lines). For anything larger, describe it and list the file in section 13 instead of pasting it.
 
@@ -81,7 +91,7 @@ Write compact lines, one fact per bullet. Use tables for data with more than 3 r
 You are continuing work from a previous chat. That chat is gone; this file is the complete context and the source of truth.
 
 1. Read this whole file before replying.
-2. Follow sections 3 (Style), 4 (Hard rules) and 5 (Corrections) in every reply, for the rest of this chat. They override your defaults.
+2. Take on the role and setup in section 14. Follow sections 3 (Style), 4 (Hard rules) and 5 (Corrections) in every reply, for the rest of this chat. They override your defaults.
 3. Use the values in section 8 exactly. Never round, re-estimate, or "correct" them.
 4. Do not suggest anything listed in section 7 (Changed / rejected) again unless the user brings it up.
 5. Code word: <Start every reply with exactly "PHRASE" | None active. If the user types /amcodeword, start every reply with the phrase they choose (default "Yes Boss!")>.
@@ -146,11 +156,45 @@ You are continuing work from a previous chat. That chat is gone; this file is th
 
 ## 13. Re-attach checklist
 - [ ] <file name>: <why the new chat needs it>
-<or "Nothing to attach.">
+<or "Nothing to attach." In a pack: "All sources are in the pack.">
+
+## 14. Claude setup (role, mindset, settings)
+- **Role:** <what Claude is acting as, e.g. senior plugin engineer and patient teacher>
+- **Mindset:** <how it should think: e.g. verify before claiming, push back honestly, prefer simple>
+- **Active modes:** <code word, language, effort, anything switched on or off>
+- **Tools & access:** <connectors, folders, repos, browser, what Claude can and cannot do here>
+- **Inputs it works from:** <the sources that matter most, by sources/ path>
+- **Outputs it owns:** <files or artifacts it produces and where they go>
 
 ---
-<sub>Audit: 13/13 sections · <N> rules · <N> corrections · <N> data points · secrets removed: <yes/none found> · generated by active-memory</sub>
+<sub>Audit: 15/15 sections · <N> rules · <N> corrections · <N> data points · quiz <N>/10 · recall <N>/<N> · secrets removed: <yes/none found> · generated by active-memory</sub>
 ````
+
+## Handoff pack (sources included)
+
+A handoff file alone loses the material the chat worked from. Whenever files were shared or produced in the chat, build a **pack**, not just a file. `/amsave` always uses pack mode.
+
+```
+handoff.md          the 14-section file below
+MANIFEST.md         one row per source file
+sources/            the files themselves, original names
+transcript.jsonl    Claude Code only: the old chat word for word (copied by the plugin's hook)
+```
+
+In Claude Code, the plugin's `collect` script copies every file the chat read, wrote or edited, plus attached images and PDFs, and fingerprints each one. Elsewhere, copy the files yourself. Fill `sources/` with:
+
+- Every file the user uploaded or attached: documents, spreadsheets, images, screenshots, PDFs, zips. In Cowork these are in the uploads folder; copy them as they are.
+- The **latest** version of every file Claude created or changed. Older versions only if the chat still refers to them.
+- Text the user pasted that is longer than about 20 lines (code, logs, emails): save it as `pasted-<short-name>.txt`.
+- Links the user shared: list them in `MANIFEST.md` with what they are; fetch and save a copy only if they are needed to continue and can be opened.
+
+`MANIFEST.md` format:
+
+| File | What it is | Came from | Used in section |
+|---|---|---|---|
+| sources/<name> | <one line> | uploaded by user / made by Claude / pasted / link | <section numbers> |
+
+Mark anything that could not be copied as **NOT COPIED** with the reason. Keep `MANIFEST.md` to one line per file; the fingerprints live in `fingerprints.json`, not in the manifest. In `handoff.md`, refer to files by their `sources/` path, and make section 13 point to the pack instead of asking the user to re-attach files one by one.
 
 ## Chained handoffs
 
@@ -181,7 +225,7 @@ If a code word is active, this reply also starts with it.
 
 When a user attaches or pastes a file that starts with `# active-memory handoff`:
 
-1. Read the entire file before replying. Its section 0 instructions apply for the rest of the chat.
+1. Read the entire file before replying. Its section 0 instructions apply for the rest of the chat. If it came in a pack, open `MANIFEST.md` and check each listed file exists in `sources/`. Report the count in your first reply ("12 of 12 sources loaded") and name any that are missing.
 2. Treat sections 3, 4, and 5 as binding rules and section 8 as exact data.
 3. If section 0 names an active code word, start this reply and every later reply with it.
 4. Reply with a confirmation of at most 5 lines: the goal, the latest state, the next step, and any files from section 13 that were not attached. Then ask the open questions from section 12 if any exist, and end with "Ready to continue with <next step>?"

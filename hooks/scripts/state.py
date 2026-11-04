@@ -70,3 +70,62 @@ def read_stdin_json(stream):
         return json.loads(raw or "{}")
     except (ValueError, IOError, OSError, UnicodeDecodeError):
         return {}
+
+
+def packs_dir():
+    base = os.environ.get("ACTIVE_MEMORY_PACKS_DIR") or os.path.join(
+        os.path.expanduser("~"), ".claude", "active-memory", "packs"
+    )
+    try:
+        os.makedirs(base)
+    except OSError:
+        pass
+    return base
+
+
+def pack_ids():
+    ids = []
+    for name in os.listdir(packs_dir()):
+        if name.isdigit() and os.path.isdir(os.path.join(packs_dir(), name)):
+            ids.append(int(name))
+    return sorted(ids)
+
+
+def pack_title(pack_id):
+    try:
+        f = io.open(os.path.join(packs_dir(), str(pack_id), "handoff.md"), encoding="utf-8")
+        try:
+            first = f.readline().strip()
+        finally:
+            f.close()
+        return first.replace("# active-memory handoff:", "").strip() or "(untitled)"
+    except (IOError, OSError):
+        return "(not finished)"
+
+
+def next_session_no(folder):
+    """1 for a new pack; one more than the transcripts already saved otherwise."""
+    count = 0
+    try:
+        for name in os.listdir(folder):
+            if name == "transcript.jsonl" or re.match(r"^transcript-\d+\.jsonl$", name):
+                count += 1
+    except OSError:
+        pass
+    if count == 0 and os.path.isfile(os.path.join(folder, "handoff.md")):
+        count = 1  # pack saved without a transcript (desktop app): it still had one session
+    return count + 1
+
+
+def is_cloud():
+    """True in a temporary cloud session (Cowork cloud), where this computer is wiped later."""
+    flag = os.environ.get("ACTIVE_MEMORY_CLOUD")
+    if flag is not None:
+        return flag == "1"
+    return os.path.isdir("/mnt/user-data/outputs") or any(k.startswith("CCR_") for k in os.environ)
+
+
+def cloud_extra_dirs():
+    if not is_cloud():
+        return []
+    return [d for d in ("/mnt/user-data/uploads", "/mnt/user-data/outputs") if os.path.isdir(d)]

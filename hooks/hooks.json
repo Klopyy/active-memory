@@ -1,5 +1,5 @@
 {
-  "description": "active-memory (Claude Code only): counts messages to trigger checkpoints at 20 and 35, and checks that each reply starts with the active code word. Runs with whichever Python is installed (py, python3 or python); if none is found, the hooks quietly do nothing.",
+  "description": "active-memory (Claude Code only): checkpoint counter, code word checker, pinned rules (/amrules) re-sent with every message, numbered packs for /amsave and /amload (collects and fingerprints sources, checks recall and verifies each save automatically, no permission prompts), and a transcript backup before compaction. Runs with whichever Python is installed (py, python3 or python); if none is found, the hooks quietly do nothing.",
   "hooks": {
     "UserPromptSubmit": [
       {
@@ -19,6 +19,22 @@
             "type": "command",
             "command": "py \"${CLAUDE_PLUGIN_ROOT}/hooks/scripts/check_codeword.py\" || python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/scripts/check_codeword.py\" || python \"${CLAUDE_PLUGIN_ROOT}/hooks/scripts/check_codeword.py\" || exit 0",
             "timeout": 15
+          },
+          {
+            "type": "command",
+            "command": "py \"${CLAUDE_PLUGIN_ROOT}/hooks/scripts/finalize_pack.py\" || python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/scripts/finalize_pack.py\" || python \"${CLAUDE_PLUGIN_ROOT}/hooks/scripts/finalize_pack.py\" || exit 0",
+            "timeout": 60
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "py \"${CLAUDE_PLUGIN_ROOT}/hooks/scripts/pre_compact.py\" || python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/scripts/pre_compact.py\" || python \"${CLAUDE_PLUGIN_ROOT}/hooks/scripts/pre_compact.py\" || exit 0",
+            "timeout": 30
           }
         ]
       }

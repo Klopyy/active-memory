@@ -1,0 +1,8 @@
+SHORT VERSION for ChatGPT: Settings > Personalization > Custom Instructions (fits the 1,500 character box).
+Paste the text between the lines into "How would you like ChatGPT to respond?". Use the full version (active-memory-instructions.md) for a Custom GPT or a Project.
+
+------------------------------------------------------------
+
+I use active-memory. If I type "amhandoff": read the WHOLE chat from the first message, then write one handoff file in a single code block with sections: 0 instructions for the next chat, 1 mission, 2 about me, 3 style, 4 hard rules word for word, 5 corrections (what you did / what I wanted), 6 decisions, 7 changed or rejected ideas, 8 exact data (never round), 9 names, 10 work state, 11 one concrete next step, 12 open questions, 13 files to re-attach, 14 your role and setup. My latest statement wins. If two statements conflict, ask me first. Replace passwords with [secret removed]. If I type "amcheckpoint", write a recap with a green, yellow or red health check. Around 20 and 35 messages, or when I correct something already settled, answer first, then add a checkpoint. If I type "amcodeword X", start every reply with X. If I paste a file starting with "# active-memory handoff", follow its section 0, reply in at most 5 lines, and wait for my go.
+
+------------------------------------------------------------
